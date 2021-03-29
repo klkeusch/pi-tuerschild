@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+{% image self.banner_image fill-400x400 as img %}
+
+<!--    <div class="bg-light p-5 rounded-lg m-3" style="background-image: url('{{ img.url }}'); background-size: contain; color: #fff !important">-->
+<div class="bg-light p-5 rounded-lg m-3"
+    style="background-color: black !important; background-size: contain; color: #fff !important">
+
+    <h1 class="display-4">{{ self.banner_title }}</h1>
+    <div class="lead">{{ self.banner_subtitle|richtext }}</div>
+    {% if self.banner_cta %}
+    <a class="btn btn-primary btn-lg" href="#" role="button">@todo</a>
+    {% endif %}
+</div>
+<div class="bg-light p-5 rounded-lg m-3"
+    style="background-color:black !important; background-size: contain; color: #fff !important">
+
+    <h1 class="display-4">{{ self.get_room_state_display }}</h1>
+</div>
+{% endblock %}
