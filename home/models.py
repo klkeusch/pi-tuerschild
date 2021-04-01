@@ -6,27 +6,6 @@ from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, MultiField
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 
-# """ New model for Room status as multiple choice """
-# class RoomStatus(models.Model):
-#     DONOTDISTURB = 'DND'
-#     OPEN = 'OPN'
-#     CLOSED = 'CLS'
-
-#     ROOM_STATUS_CHOICES = [
-#         (DONOTDISTURB, 'Do not disturb!'),
-#         (OPEN, 'We are open!'),
-#         (CLOSED, 'We are closed!'),
-#     ]
-
-#     room_status = models.CharField(
-#         max_length = 3,
-#         choices = ROOM_STATUS_CHOICES,
-#         default = OPEN,
-#     )
-
-#     def where_room_status(self):
-#         return self.room_status
-
 DONOTDISTURB = 'DND'
 OPEN = 'OPN'
 CLOSED = 'CLS'
@@ -39,29 +18,43 @@ ROOM_STATE_CHOICES = [
     (AWAY, 'Wir haben gleich wieder geöffnet!')
 ]
 
+
 class HomePage(Page):
     """ Home page model. """
     max_count = 1
 
-
-
     template = "home/home_page.html"
 
-    banner_title = models.CharField(max_length=100, blank=False, null=True)
-    banner_subtitle = RichTextField(features=["bold", "italic"])
+    banner_title = models.CharField(
+        max_length=100, 
+        blank=False, 
+        null=True
+    )
+    
+    banner_subtitle = RichTextField(
+        features = [
+            "bold", 
+            "italic", 
+            "h2", 
+            "h3",
+            "hr",
+        ]
+    )
+    
     banner_image = models.ForeignKey(
         "wagtailimages.Image", 
-        null=True,
-        blank=True,#False, 
-        on_delete=models.SET_NULL, 
-        related_name="+",
+        null = True,
+        blank = True,#False, 
+        on_delete = models.SET_NULL, 
+        related_name = "+",
     )
+
     banner_cta = models.ForeignKey(
         "wagtailcore.Page",
-        null=True,
-        blank=True, 
-        on_delete=models.SET_NULL, 
-        related_name="+",
+        null = True,
+        blank = True, 
+        on_delete = models.SET_NULL, 
+        related_name = "+",
     )
 
     room_state = models.CharField(
@@ -79,9 +72,9 @@ class HomePage(Page):
         FieldPanel("room_state"),
     ]
 
+
     class RoomStateChoice(models.Model):
-
-
+        """ Room state model. """
         room_state = models.CharField(
             'Raumzustand',
             max_length = 3,
@@ -96,5 +89,6 @@ class HomePage(Page):
             return self.room_state
 
     class Meta:
-        verbose_name = "Home Page"
-        verbose_name_plural = "Home Pages"
+        """ Meta informations. """
+        verbose_name = "Homepage"
+        verbose_name_plural = "Homepages"
