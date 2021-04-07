@@ -8,6 +8,9 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
+""" 20210407 """
+from home import views as home_views
+
 
 urlpatterns = [
     path('django-admin/', admin.site.urls),
@@ -17,7 +20,8 @@ urlpatterns = [
 
     path('search/', search_views.search, name='search'),
     #path('__debug__/', include(debug_toolbar.urls)),
-
+    path('ledoff/', home_views.turnLEDOff, name='turnledoff'),
+    path('ledon/', home_views.turnLEDOn, name='turnledon'),
 ]
 
 

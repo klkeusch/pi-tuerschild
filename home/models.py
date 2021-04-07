@@ -5,7 +5,6 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
-import RPi.GPIO as GPIO
 
 
 DONOTDISTURB = 'DND'
@@ -79,6 +78,7 @@ class HomePage(Page):
     ]
 
 
+        
     # class RoomStateChoice(models.Model):
     #     """ Room state model. """
     #     room_state = models.CharField(
