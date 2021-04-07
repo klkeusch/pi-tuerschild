@@ -35,7 +35,7 @@ urlpatterns = urlpatterns + [
     # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:
     
-    path('__debug__/', include(debug_toolbar.urls)),
+    #path('__debug__/', include(debug_toolbar.urls)),
 
     path("", include(wagtail_urls)),
     

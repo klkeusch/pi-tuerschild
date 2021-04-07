@@ -5,6 +5,8 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+import RPi.GPIO as GPIO
+
 
 DONOTDISTURB = 'DND'
 OPEN = 'OPN'
@@ -26,12 +28,14 @@ class HomePage(Page):
     template = "home/home_page.html"
 
     banner_title = models.CharField(
+        "Nachricht des Tages",
         max_length=100, 
         blank=False, 
         null=True
     )
     
     banner_subtitle = RichTextField(
+        "Details zur Nachricht des Tages",
         features = [
             "bold", 
             "italic", 
@@ -41,6 +45,7 @@ class HomePage(Page):
         ]
     )
     
+    """ Not being used """
     banner_image = models.ForeignKey(
         "wagtailimages.Image", 
         null = True,
@@ -49,6 +54,7 @@ class HomePage(Page):
         related_name = "+",
     )
 
+    """Not being used """
     banner_cta = models.ForeignKey(
         "wagtailcore.Page",
         null = True,
@@ -58,7 +64,7 @@ class HomePage(Page):
     )
 
     room_state = models.CharField(
-        'Raumzustand',
+        'Raum-Status',
         max_length = 3,
         choices = ROOM_STATE_CHOICES,
         default = OPEN,
@@ -73,20 +79,20 @@ class HomePage(Page):
     ]
 
 
-    class RoomStateChoice(models.Model):
-        """ Room state model. """
-        room_state = models.CharField(
-            'Raumzustand',
-            max_length = 3,
-            choices = ROOM_STATE_CHOICES,
-            default = OPEN,
-        )
+    # class RoomStateChoice(models.Model):
+    #     """ Room state model. """
+    #     room_state = models.CharField(
+    #         'Raumzustand',
+    #         max_length = 3,
+    #         choices = ROOM_STATE_CHOICES,
+    #         default = OPEN,
+    #     )
 
-        def __str__(self):
-            return self.room_state
+        # def __str__(self):
+        #     return self.room_state
         
-        def where_room_state(self):
-            return self.room_state
+        # def where_room_state(self):
+        #     return self.room_state
 
     class Meta:
         """ Meta informations. """
