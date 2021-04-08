@@ -4,22 +4,34 @@
 
 {% block content %}
 
-{% image self.banner_image fill-400x400 as img %}
+<!-- not in use: {% image self.banner_image fill-400x400 as img %} -->
 
-<!--    <div class="bg-light p-5 rounded-lg m-3" style="background-image: url('{{ img.url }}'); background-size: contain; color: #fff !important">-->
+<!-- MOTD -->
 <div class="bg-light p-5 rounded-lg m-3"
-    style="background-color: black !important; background-size: contain; color: #fff !important">
+    style="background-color: black !important; background-size: contain; margin-top: 70px !important; color: #fff !important">
 
-    <h1 class="display-4">{{ self.banner_title }}</h1>
-    <div class="lead">{{ self.banner_subtitle|richtext }}</div>
-    <!--  {% if self.banner_cta %}  -->
-    <a class="btn btn-primary btn-lg" href="/ledoff" role="button">LED OFF</a>
-    <button type="button" class="btn btn-primary btn-lg btn-block" href="#">LED Off</button>
-    <!--  {% endif %}  -->
+        <h1 class="display-4" style="font-size: 60px;">{{ self.banner_title }}</h1>
+        <div class="lead" style="font-size: 40px;">{{ self.banner_subtitle|richtext }}</div>
 </div>
-<div class="bg-light p-5 rounded-lg m-3"
-    style="background-color:black !important; background-size: contain; color: #fff !important">
 
-    <h1 class="display-4">{{ self.get_room_state_display }}</h1>
+<!-- Room state -->
+<div class="bg-light p-5 rounded-lg m-3"
+    style="background-color:black !important; padding-top: 0px; background-size: contain; color: #fff !important">
+
+    <!-- room_state without colors: <h1 class="display-4" style="">{{ self.get_room_state_display }}</h1>-->
+
+    {% if self.get_room_state_display == 'Bitte nicht stören!' %}
+        <h1 class="display-4" style="color: orange; font-weight: bold; text-transform: uppercase;">{{ self.get_room_state_display }}</h1>
+
+    {% elif self.get_room_state_display == 'Wir haben geöffnet!' %}
+        <h1 class="display-4" style="color: green; font-weight: bold; text-transform: uppercase;">{{ self.get_room_state_display }}</h1>
+
+    {% elif self.get_room_state_display == 'Wir haben geschlossen!' %}
+        <h1 class="display-4" style="color: red; font-weight: bold; text-transform: uppercase;">{{ self.get_room_state_display }}</h1>
+
+    {% elif self.get_room_state_display == 'Wir haben gleich wieder geöffnet!' %}
+        <h1 class="display-4" style="color: blue; font-weight: bold; text-transform: uppercase;">{{ self.get_room_state_display }}</h1>
+
+    {% endif %}
 </div>
 {% endblock %}

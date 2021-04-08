@@ -5,6 +5,7 @@ from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from django.utils.html import format_html
 
 DONOTDISTURB = "DND"
 OPEN = "OPN"
@@ -73,6 +74,12 @@ class HomePage(Page):
         # PageChooserPanel("banner_cta"),
         FieldPanel("room_state"),
     ]
+
+    def room_state_colored(self, obj):
+        color = 'white'
+        if obj.room_state == 'DND':
+            color = 'red'
+        return format_html('<b style="background:{} !important;">{}</b>', colors, obj.room_state)
 
     class Meta:
         """ Meta informations. """
