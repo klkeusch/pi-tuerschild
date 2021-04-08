@@ -12,9 +12,10 @@
 
     <h1 class="display-4">{{ self.banner_title }}</h1>
     <div class="lead">{{ self.banner_subtitle|richtext }}</div>
-    {% if self.banner_cta %}
-    <a class="btn btn-primary btn-lg" href="#" role="button">@todo</a>
-    {% endif %}
+    <!--  {% if self.banner_cta %}  -->
+    <a class="btn btn-primary btn-lg" href="/ledoff" role="button">LED OFF</a>
+    <button type="button" class="btn btn-primary btn-lg btn-block" href="#">LED Off</button>
+    <!--  {% endif %}  -->
 </div>
 <div class="bg-light p-5 rounded-lg m-3"
     style="background-color:black !important; background-size: contain; color: #fff !important">

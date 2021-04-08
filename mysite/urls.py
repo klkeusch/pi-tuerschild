@@ -22,6 +22,7 @@ urlpatterns = [
     #path('__debug__/', include(debug_toolbar.urls)),
     path('ledoff/', home_views.turnLEDOff, name='turnledoff'),
     path('ledon/', home_views.turnLEDOn, name='turnledon'),
+    path('ledtoggle/', home_views.toggleLED, name='toggleled'),
 ]
 
 
