@@ -4,34 +4,39 @@
 
 {% block content %}
 
-<!-- not in use: {% image self.banner_image fill-400x400 as img %} -->
-
 <!-- MOTD -->
-<div class="bg-light p-5 rounded-lg m-3"
-    style="background-color: black !important; background-size: contain; margin-top: 70px !important; color: #fff !important">
+<div class="p-5 rounded rounded-lg m-3 text-white bg-secondary"
+    style="height: 270px; margin-top: 40px !important;">
 
-        <h1 class="display-4" style="font-size: 60px;">{{ self.banner_title }}</h1>
-        <div class="lead" style="font-size: 40px;">{{ self.banner_subtitle|richtext }}</div>
+        <h1 class="display-4 border-bottom" 
+           style="font-size: 50px;">{{ self.banner_title }}</h1>
+        
+        <div class="lead" 
+            style="font-size: 25px; margin-top: 20px;">{{ self.banner_subtitle|richtext }}</div>
 </div>
 
 <!-- Room state -->
-<div class="bg-light p-5 rounded-lg m-3"
-    style="background-color:black !important; padding-top: 0px; background-size: contain; color: #fff !important">
-
-    <!-- room_state without colors: <h1 class="display-4" style="">{{ self.get_room_state_display }}</h1>-->
-
     {% if self.get_room_state_display == 'Bitte nicht stören!' %}
-        <h1 class="display-4" style="color: orange; font-weight: bold; text-transform: uppercase;">{{ self.get_room_state_display }}</h1>
+        <div class="p-5 rounded rounded-lg m-3 display-4 bg-warning text-center text-uppercase text-white font-weight-bold"
+            style="height: 125px; padding-top: 30px !important; padding-bottom: 15px !important; font-weight: bold; letter-spacing: 2px;"
+
+            <h1 class="" style="">{{ self.get_room_state_display }}</h1>
+        </div>
 
     {% elif self.get_room_state_display == 'Wir haben geöffnet!' %}
-        <h1 class="display-4" style="color: green; font-weight: bold; text-transform: uppercase;">{{ self.get_room_state_display }}</h1>
+        <div class="p-5 rounded rounded-lg m-3 display-4 bg-success text-center text-uppercase text-white font-weight-bold"
+            style="height: 125px; padding-top: 30px !important; padding-bottom: 15px !important; font-weight: bold; letter-spacing: 2px;"
+
+            <h1 class="" style="">{{ self.get_room_state_display }}</h1>
+        </div>
 
     {% elif self.get_room_state_display == 'Wir haben geschlossen!' %}
-        <h1 class="display-4" style="color: red; font-weight: bold; text-transform: uppercase;">{{ self.get_room_state_display }}</h1>
+        <div class="p-5 rounded rounded-lg m-3 display-4 bg-danger text-center text-uppercase text-white font-weight-bold"
+            style="height: 125px; padding-top: 30px !important; padding-bottom: 15px !important; font-weight: bold; letter-spacing: 2px;"
 
-    {% elif self.get_room_state_display == 'Wir haben gleich wieder geöffnet!' %}
-        <h1 class="display-4" style="color: blue; font-weight: bold; text-transform: uppercase;">{{ self.get_room_state_display }}</h1>
+            <h1 class="" style="">{{ self.get_room_state_display }}</h1>
+        </div>    
 
     {% endif %}
-</div>
+
 {% endblock %}

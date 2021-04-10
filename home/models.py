@@ -10,13 +10,11 @@ from django.utils.html import format_html
 DONOTDISTURB = "DND"
 OPEN = "OPN"
 CLOSED = "CLS"
-AWAY = "BRB"
 
 ROOM_STATE_CHOICES = [
     (DONOTDISTURB, "Bitte nicht stören!"),
     (OPEN, "Wir haben geöffnet!"),
     (CLOSED, "Wir haben geschlossen!"),
-    (AWAY, "Wir haben gleich wieder geöffnet!"),
 ]
 
 
@@ -28,7 +26,7 @@ class HomePage(Page):
 
     banner_title = models.CharField(
         "Nachricht des Tages",
-         max_length=100,
+         max_length=65,
          blank=True,
          null=False,
     )
@@ -42,7 +40,7 @@ class HomePage(Page):
             "h3",
             "hr",
         ],
-        max_length = 255,
+        max_length = 254,
         blank=True,
         null=False,
     )

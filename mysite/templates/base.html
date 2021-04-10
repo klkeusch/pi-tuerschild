@@ -27,8 +27,28 @@
     <!--<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/mysite.css' %}">
     <style>
-	.navbar-brand{
-	    font-size: 32px;
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:after {
+            content: "";
+            background: #7FDBFF;
+            display: block;
+            position: absolute;
+            padding-top: 300%;
+            padding-left: 150%;
+            margin-left: -20px !important;
+            margin-top: -120%;
+            opacity: 0;
+            transition: all 8s
+        }
+
+        .btn:active:after {
+            margin: 0;
+            opacity: 1;
+            transition: 0s
         }
     </style>
     {% block extra_css %}
@@ -42,13 +62,7 @@
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Medienwerkstatt | Raum 5404</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                </div>
+                <a class="navbar-brand" href="#" style="font-size: 32px;">Medienwerkstatt | Raum 5404</a>
             </div>
         </nav>
     </header>
@@ -59,18 +73,11 @@
 
     <!-- "Tuerklingel" wird auf jeder Seite benoetigt, daher hier in der base.html -->
     <main>
-       <!--  <a href="ledoff" class="btn btn-primary btn-lg btn-block" role="button">LED Aus</a> -->
-       <!--  <a href="ledon" class="btn btn-primary btn-lg btn-block" role="button">LED An</a> -->
-       <!--  <a href="ledtoggle" class="btn btn-primary btn-lg btn-block" role="button" style="width: 90%; margin: 0 auto; display: block; padding:15px; text-transform: uppercase;">Real fake doorbell</a> --->
-    
-    <a href="ledtoggle">
-    <button type="button" class="btn btn-primary" style="width: 90%; margin: 0 auto; display: block; padding: 15px; font-size: 32px">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"></path>
-</svg>
-                Türklingel
-              </button>
-    </a>
+        <a type="button" href="ledtoggle/" class=" text-center btn btn-primary rounded-pill p-2" style="height: 120px; width: 90%; margin: 0 auto; display: block; font-size: 30px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"></path></svg>
+            <br />Türklingel
+        </a>
     </main>
 
     {# Global javascript #}
