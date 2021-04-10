@@ -20,15 +20,16 @@ ROOM_STATE_CHOICES = [
 
 class HomePage(Page):
     """ Home page model. """
+
     max_count = 1
 
     template = "home/home_page.html"
 
     banner_title = models.CharField(
         "Nachricht des Tages",
-         max_length=65,
-         blank=True,
-         null=False,
+        max_length=65,
+        blank=True,
+        null=False,
     )
 
     banner_subtitle = RichTextField(
@@ -40,7 +41,7 @@ class HomePage(Page):
             "h3",
             "hr",
         ],
-        max_length = 254,
+        max_length=254,
         blank=True,
         null=False,
     )

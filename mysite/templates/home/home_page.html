@@ -5,38 +5,32 @@
 {% block content %}
 
 <!-- MOTD -->
-<div class="p-5 rounded rounded-lg m-3 text-white bg-secondary"
-    style="height: 270px; margin-top: 40px !important;">
+<div class="p-5 rounded rounded-lg m-3 text-white bg-secondary" style="height: 270px; margin-top: 40px !important;">
 
-        <h1 class="display-4 border-bottom" 
-           style="font-size: 50px;">{{ self.banner_title }}</h1>
-        
-        <div class="lead" 
-            style="font-size: 25px; margin-top: 20px;">{{ self.banner_subtitle|richtext }}</div>
+    <h1 class="display-4 border-bottom" style="font-size: 50px;">{{ self.banner_title }}</h1>
+
+    <div class="lead" style="font-size: 25px; margin-top: 20px;">{{ self.banner_subtitle|richtext }}</div>
 </div>
 
 <!-- Room state -->
-    {% if self.get_room_state_display == 'Bitte nicht stören!' %}
-        <div class="p-5 rounded rounded-lg m-3 display-4 bg-warning text-center text-uppercase text-white font-weight-bold"
-            style="height: 125px; padding-top: 30px !important; padding-bottom: 15px !important; font-weight: bold; letter-spacing: 2px;"
+{% if self.get_room_state_display == 'Bitte nicht stören!' %}
+<div class="p-5 rounded rounded-lg m-3 display-4 bg-danger text-center text-uppercase text-white font-weight-bold"
+    style="height: 125px; padding-top: 30px !important; padding-bottom: 15px !important; font-weight: bold; letter-spacing: 2px;"
+    <h1>{{ self.get_room_state_display }}</h1>
+</div>
 
-            <h1 class="" style="">{{ self.get_room_state_display }}</h1>
-        </div>
+{% elif self.get_room_state_display == 'Wir haben geöffnet!' %}
+<div class="p-5 rounded rounded-lg m-3 display-4 bg-success text-center text-uppercase text-white font-weight-bold"
+    style="height: 125px; padding-top: 30px !important; padding-bottom: 15px !important; font-weight: bold; letter-spacing: 2px;"
+    <h1>{{ self.get_room_state_display }}</h1>
+</div>
 
-    {% elif self.get_room_state_display == 'Wir haben geöffnet!' %}
-        <div class="p-5 rounded rounded-lg m-3 display-4 bg-success text-center text-uppercase text-white font-weight-bold"
-            style="height: 125px; padding-top: 30px !important; padding-bottom: 15px !important; font-weight: bold; letter-spacing: 2px;"
+{% elif self.get_room_state_display == 'Wir haben geschlossen!' %}
+<div class="p-5 rounded rounded-lg m-3 display-4 bg-warning text-center text-uppercase text-white font-weight-bold"
+    style="height: 125px; padding-top: 30px !important; padding-bottom: 15px !important; font-weight: bold; letter-spacing: 2px;"
+    <h1>{{ self.get_room_state_display }}</h1>
+</div>
 
-            <h1 class="" style="">{{ self.get_room_state_display }}</h1>
-        </div>
-
-    {% elif self.get_room_state_display == 'Wir haben geschlossen!' %}
-        <div class="p-5 rounded rounded-lg m-3 display-4 bg-danger text-center text-uppercase text-white font-weight-bold"
-            style="height: 125px; padding-top: 30px !important; padding-bottom: 15px !important; font-weight: bold; letter-spacing: 2px;"
-
-            <h1 class="" style="">{{ self.get_room_state_display }}</h1>
-        </div>    
-
-    {% endif %}
+{% endif %}
 
 {% endblock %}
