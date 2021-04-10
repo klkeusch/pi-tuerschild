@@ -22,13 +22,15 @@ ROOM_STATE_CHOICES = [
 
 class HomePage(Page):
     """ Home page model. """
-
     max_count = 1
 
     template = "home/home_page.html"
 
     banner_title = models.CharField(
-        "Nachricht des Tages", max_length=100, blank=False, null=True
+        "Nachricht des Tages",
+         max_length=100,
+         blank=True,
+         null=False,
     )
 
     banner_subtitle = RichTextField(
@@ -40,24 +42,9 @@ class HomePage(Page):
             "h3",
             "hr",
         ],
-    )
-
-    """ Not being used """
-    banner_image = models.ForeignKey(
-        "wagtailimages.Image",
-        null=True,
-        blank=True,  # False,
-        on_delete=models.SET_NULL,
-        related_name="+",
-    )
-
-    """Not being used """
-    banner_cta = models.ForeignKey(
-        "wagtailcore.Page",
-        null=True,
+        max_length = 255,
         blank=True,
-        on_delete=models.SET_NULL,
-        related_name="+",
+        null=False,
     )
 
     room_state = models.CharField(
@@ -70,16 +57,8 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("banner_title"),
         FieldPanel("banner_subtitle"),
-        # ImageChooserPanel("banner_image"),
-        # PageChooserPanel("banner_cta"),
         FieldPanel("room_state"),
     ]
-
-    def room_state_colored(self, obj):
-        color = 'white'
-        if obj.room_state == 'DND':
-            color = 'red'
-        return format_html('<b style="background:{} !important;">{}</b>', colors, obj.room_state)
 
     class Meta:
         """ Meta informations. """
